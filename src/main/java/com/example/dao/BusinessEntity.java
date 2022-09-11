@@ -6,9 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -19,10 +17,11 @@ import java.util.Date;
 public class BusinessEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String itemId;
     private String itemName;
-    private String customerId;
+    private Integer customerId;
     private String number;
     private String demandType;
     private String currentState;
@@ -39,7 +38,7 @@ public class BusinessEntity {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
     private Date completionTime;
-    private Date upDate;
+    private Date updateTime;
     private String userId;
 
 }

@@ -17,16 +17,16 @@ import java.util.Date;
 public class CustomersEntity {
 
     @Id
-    private	 Integer	id;
-    private	String	company;
-    private	String	Department;
-    private	String	customer;
-    private	Boolean	gender;
-    private	String	telephone;
-    private	String	address;
-    private	Boolean	state;
+    private Integer id;
+    private String company;
+    private String Department;
+    private String customer;
+    private Boolean gender;
+    private String telephone;
+    private String address;
+    private Boolean state;
     private Date createTime;
-    private	Date	updateTime;
-    private	String	userId;
+    private Date updateTime;
+    private String userId;
 
 }
