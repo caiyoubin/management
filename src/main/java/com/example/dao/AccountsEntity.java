@@ -5,19 +5,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Getter
 @Setter
 @ToString
 @Entity
 @Table(name = "accounts")
-public class AccountsEntity {
+public class AccountsEntity extends BaseEntity{
 
-    @Id
-    private Integer id;
     private Double material_cost;
     private Double labor_cost;
     private Double trafficExpense;
@@ -26,8 +22,6 @@ public class AccountsEntity {
     private Boolean is_bill;
     private Boolean is_return;
     private String remarks;
-    private Date createTime;
-    private Date updateTime;
     private String userId;
 
 }

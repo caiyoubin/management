@@ -10,16 +10,13 @@ import javax.validation.constraints.NotNull;
 
 
 @Data
-public class BusinessRequest {
+public class BusinessCreateRequest {
 
-    @NotNull(message = "item name can not be null.")
     @JsonProperty("item_name")
     private String itemName;
-//    @NotNull(message = "customer can not be null.")
+    @NotNull(message = "customer can not be null.")
     @JsonProperty("customer_id")
     private Integer customerId;
-    @JsonProperty("user_id")
-    private Integer userId;
     private String number;
     @JsonProperty("demand_type")
     private String demandType;
@@ -37,6 +34,7 @@ public class BusinessRequest {
     public BusinessEntity toEntity() {
         final BusinessEntity entity = new BusinessEntity();
         BeanUtils.copyProperties(this, entity);
+        entity.setId(null);
         entity.setUpdateTime(entity.getCreateTime());
         return entity;
     }

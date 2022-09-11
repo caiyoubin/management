@@ -5,7 +5,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -14,10 +13,8 @@ import java.util.Date;
 @ToString
 @Entity
 @Table(name = "users")
-public class UsersEntity {
+public class UsersEntity extends BaseEntity{
 
-    @Id
-    private Integer id;
     private String username;
     private String password;
     private String nickname;
@@ -27,8 +24,6 @@ public class UsersEntity {
     private Boolean state;
     private Date entryTime;
     private Date departureTime;
-    private Date createTime;
-    private Date updateTime;
     private String userId;
 
 }
