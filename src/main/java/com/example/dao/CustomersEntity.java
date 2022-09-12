@@ -15,12 +15,12 @@ import javax.persistence.Table;
 public class CustomersEntity extends BaseEntity{
 
     private String company;
-    private String Department;
+    private String department;
     private String customer;
     private Boolean gender;
     private String telephone;
     private String address;
-    private Boolean state;
+    private Boolean state = false;
     private String userId;
 
 }

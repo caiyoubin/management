@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Data
-public class AccountsUpdateRequest {
+public class AccountsRequest {
 
     @NotNull
     private Integer id;
