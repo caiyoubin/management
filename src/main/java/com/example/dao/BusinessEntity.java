@@ -10,12 +10,12 @@ import java.util.Date;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 @Entity
 @Table(name = "business")
 public class BusinessEntity extends BaseEntity{
 
-    private String itemId;
+    private Integer itemId;
     private String itemName;
     private Integer customerId;
     private String number;

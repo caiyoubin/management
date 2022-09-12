@@ -17,6 +17,8 @@ public class BusinessCreateRequest {
     @NotNull(message = "customer can not be null.")
     @JsonProperty("customer_id")
     private Integer customerId;
+    @JsonProperty("item_id")
+    private Integer itemId;
     private String number;
     @JsonProperty("demand_type")
     private String demandType;
@@ -35,7 +37,6 @@ public class BusinessCreateRequest {
         final BusinessEntity entity = new BusinessEntity();
         BeanUtils.copyProperties(this, entity);
         entity.setId(null);
-        entity.setUpdateTime(entity.getCreateTime());
         return entity;
     }
 }

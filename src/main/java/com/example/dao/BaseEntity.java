@@ -3,6 +3,7 @@ package com.example.dao;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import java.util.Date;
 
 @Getter
 @Setter
+@ToString
 @MappedSuperclass
 public class BaseEntity {
 

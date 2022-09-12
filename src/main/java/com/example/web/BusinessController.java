@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+
 @RestController
+@RequestMapping(value = "/business")
 public class BusinessController extends AbstractBaseController {
 
     @Autowired
@@ -18,24 +21,25 @@ public class BusinessController extends AbstractBaseController {
     AccountsService accountsService;
 
 
-    @PostMapping(value = "/business")
+    @Transactional
+    @PostMapping
     public Object createBusiness(@Validated @RequestBody BusinessCreateRequest request) {
         final BusinessEntity entity = request.toEntity();
         businessService.save(entity);
-        final String itemId = entity.getItemId();
+        final Integer itemId = entity.getItemId();
         accountsService.saveByItemId(itemId);
         return responseOK();
     }
 
 
-    @PutMapping(value = "/business")
+    @PutMapping
     public Object updateBusiness(@Validated @RequestBody BusinessUpdateRequest request) {
         businessService.update(request);
         return responseOK();
     }
 
 
-    @GetMapping(value = "/business/search/{search}")
+    @GetMapping(value = "/search/{search}")
     public Object searchBusiness(@PathVariable String search) {
         // todo
         return responseOK();

@@ -12,7 +12,7 @@ public class AccountsService extends BaseService<AccountsEntity> {
     @Autowired
     AccountsRepository repository;
 
-    public void saveByItemId(String itemId) {
+    public void saveByItemId(Integer itemId) {
         AccountsEntity entity = repository.findByItemId(itemId);
         if (ObjectUtils.isEmpty(entity)) {
             entity = new AccountsEntity();

@@ -9,12 +9,12 @@ import javax.persistence.Table;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 @Entity
 @Table(name = "accounts")
 public class AccountsEntity extends BaseEntity{
 
-    private String itemId;
+    private Integer itemId;
     private Double materialCost;
     private Double laborCost;
     private Double trafficExpense;
