@@ -1,6 +1,7 @@
 package com.example.web;
 
 import com.example.dao.BusinessEntity;
+import com.example.service.AccountsService;
 import com.example.service.BusinessService;
 import com.example.web.request.BusinessCreateRequest;
 import com.example.web.request.BusinessUpdateRequest;
@@ -13,11 +14,16 @@ public class BusinessController extends AbstractBaseController {
 
     @Autowired
     BusinessService businessService;
+    @Autowired
+    AccountsService accountsService;
+
 
     @PostMapping(value = "/business")
     public Object createBusiness(@Validated @RequestBody BusinessCreateRequest request) {
         final BusinessEntity entity = request.toEntity();
         businessService.save(entity);
+        final String itemId = entity.getItemId();
+        accountsService.saveByItemId(itemId);
         return responseOK();
     }
 
