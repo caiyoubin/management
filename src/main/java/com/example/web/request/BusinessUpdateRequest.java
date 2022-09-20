@@ -16,7 +16,6 @@ public class BusinessUpdateRequest {
     private String currentState;
     private String productType;
     private String material;
-    private String workmanship;
     private Integer width;
     private Integer height;
     private Integer thickness;
