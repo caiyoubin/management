@@ -26,4 +26,9 @@ public class CustomersService extends BaseService<CustomersEntity> {
         entity.setUpdateTime(new Date());
         repository.save(entity);
     }
+
+    public CustomersEntity findByCustomerName(String customerName) {
+        return repository.findByCustomerName(customerName);
+    }
+
 }

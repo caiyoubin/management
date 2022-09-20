@@ -5,25 +5,21 @@ import com.example.dao.BusinessEntity;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
-import javax.validation.constraints.NotNull;
-
 
 @Data
-public class BusinessCreateRequest {
+public class BusinessRequest {
 
+    private Integer id;
     private String itemName;
-    @NotNull(message = "customer can not be null.")
-    private Integer customerId;
-    private Integer itemId;
-    private String number;
+    private Integer number;
     private String demandType;
+    private String customerName;
     private String currentState;
     private String productType;
     private String material;
     private Integer width;
     private Integer height;
     private Integer thickness;
-    private String remarks;
 
     public BusinessEntity toEntity() {
         final BusinessEntity entity = new BusinessEntity();

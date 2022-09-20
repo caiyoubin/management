@@ -23,15 +23,15 @@ public class UserController extends AbstractBaseController {
 
     @PostMapping(value = "/login")
 //    public Object login(@Validated @RequestBody UserRequest userRequest, HttpServletRequest request) {
-    public Object login(@Param("") String userId, @Param("") String password, HttpServletRequest request) {
-        UsersEntity usersEntity = usersService.findByUserIdAndPassword(userId, password);
+    public Object login(@Param("") String username, @Param("") String password, HttpServletRequest request) {
+        UsersEntity usersEntity = usersService.findByUsernameAndPassword(username, password);
         if (ObjectUtils.isEmpty(usersEntity)) {
             return responseError("The account or password is incorrect");
         }
 
         final HttpSession session = request.getSession();
-        session.setAttribute("token", userId + password);
-        session.setAttribute("userId", userId);
+        session.setAttribute("token", username + password);
+        session.setAttribute("userId", username);
         return responseOK();
     }
 

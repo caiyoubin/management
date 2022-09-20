@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "accounts")
 public class AccountsEntity extends BaseEntity{
 
-    private Integer itemId;
+    private String itemName;
     private Double materialCost;
     private Double laborCost;
     private Double trafficExpense;
@@ -22,7 +22,5 @@ public class AccountsEntity extends BaseEntity{
     private Double itemPrice;
     private Boolean isBill=false;
     private Boolean isReturn=false;
-    private String remarks;
-    private String userId;
 
 }

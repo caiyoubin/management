@@ -18,6 +18,5 @@ public class AccountsRequest {
     private Double itemPrice;
     private Boolean isBill;
     private Boolean isReturn;
-    private String remarks;
 
 }

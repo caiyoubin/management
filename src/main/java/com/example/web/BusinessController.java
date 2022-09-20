@@ -5,8 +5,7 @@ import com.example.dao.CustomersEntity;
 import com.example.service.AccountsService;
 import com.example.service.BusinessService;
 import com.example.service.CustomersService;
-import com.example.web.request.BusinessCreateRequest;
-import com.example.web.request.BusinessUpdateRequest;
+import com.example.web.request.BusinessRequest;
 import com.example.web.vo.BusinessVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -35,8 +34,8 @@ public class BusinessController extends AbstractBaseController {
         List<BusinessVo> res = new ArrayList<>();
         for (BusinessEntity entity : list) {
             final BusinessVo vo = new BusinessVo();
-            final CustomersEntity customer = customersService.findById(entity.getCustomerId());
-            vo.CopyEntity(entity, customer.getName());
+            final CustomersEntity customer = customersService.findByCustomerName(entity.getCustomerName());
+            vo.CopyEntity(entity, customer.getCustomerName());
             res.add(vo);
         }
         return responseOK(res);
@@ -45,25 +44,25 @@ public class BusinessController extends AbstractBaseController {
     @GetMapping(value = "/{id}")
     public Object selectById(@PathVariable Integer id) {
         final BusinessEntity entity = businessService.findById(id);
-        final CustomersEntity customer = customersService.findById(entity.getCustomerId());
+        final CustomersEntity customer = customersService.findByCustomerName(entity.getCustomerName());
         final BusinessVo vo = new BusinessVo();
-        vo.CopyEntity(entity, customer.getName());
+        vo.CopyEntity(entity, customer.getCustomerName());
         return responseOK(vo);
     }
 
     @Transactional
     @PostMapping
-    public Object createBusiness(@Validated @RequestBody BusinessCreateRequest request) {
+    public Object createBusiness(@Validated @RequestBody BusinessRequest request) {
         final BusinessEntity entity = request.toEntity();
         businessService.save(entity);
-        final Integer itemId = entity.getItemId();
-        accountsService.saveByItemId(itemId);
+        final String itemName = entity.getItemName();
+        accountsService.saveByItemId(itemName);
         return responseOK();
     }
 
 
     @PutMapping
-    public Object updateBusiness(@Validated @RequestBody BusinessUpdateRequest request) {
+    public Object updateBusiness(@Validated @RequestBody BusinessRequest request) {
         businessService.update(request);
         return responseOK();
     }

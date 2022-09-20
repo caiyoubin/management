@@ -16,11 +16,10 @@ public class CustomersEntity extends BaseEntity{
 
     private String company;
     private String department;
-    private String name;
+    private String customerName;
     private Boolean gender;
     private String telephone;
     private String address;
     private Boolean state = false;
-    private String userId;
 
 }

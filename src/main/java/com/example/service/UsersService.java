@@ -12,7 +12,8 @@ public class UsersService extends BaseService<UsersEntity> {
     UsersRepository repository;
 
 
-    public UsersEntity findByUserIdAndPassword(String userId, String password) {
-        return repository.findByUserIdAndPassword(userId, password);
+    public UsersEntity findByUsernameAndPassword(String username, String password) {
+        return repository.findByUsernameAndPassword(username, password);
     }
+
 }

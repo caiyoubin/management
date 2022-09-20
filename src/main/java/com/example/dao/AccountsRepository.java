@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountsRepository extends BaseRepository<AccountsEntity> {
 
-    AccountsEntity findByItemId(Integer itemId);
+    AccountsEntity findByItemName(String itemName);
 }

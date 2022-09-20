@@ -24,6 +24,5 @@ public class UsersEntity extends BaseEntity{
     private Boolean state;
     private Date entryTime;
     private Date departureTime;
-    private String userId;
 
 }

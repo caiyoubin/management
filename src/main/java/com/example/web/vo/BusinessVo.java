@@ -27,7 +27,7 @@ public class BusinessVo {
     private Date completionTime;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date updateTime;
-    private String userId;
+    private String username;
 
     public void CopyEntity(BusinessEntity entity, String customerName) {
         BeanUtils.copyProperties(entity, this);
