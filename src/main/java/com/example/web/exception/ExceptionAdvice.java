@@ -21,6 +21,7 @@ public class ExceptionAdvice {
         final HttpExceptionResponse response = new HttpExceptionResponse(StateCode.FAIL, e.getMessage(), request.getRequestURI());
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        e.printStackTrace();
         return new ResponseEntity<>(response, httpHeaders, badRequest);
     }
 }

@@ -1,24 +1,18 @@
-package com.example.dao;
+package com.example.web.vo;
 
+import com.example.dao.BusinessEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
+import org.springframework.beans.BeanUtils;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Date;
 
-@Getter
-@Setter
-@ToString(callSuper = true)
-@Entity
-@Table(name = "business")
-public class BusinessEntity extends BaseEntity{
+@Data
+public class BusinessVo {
 
-    private Integer itemId;
+    private Integer id;
     private String itemName;
-    private Integer customerId;
+    private String customerName;
     private Integer number;
     private String demandType;
     private String currentState;
@@ -28,13 +22,17 @@ public class BusinessEntity extends BaseEntity{
     private Integer width;
     private Integer height;
     private Integer thickness;
-    private String imageUrl;
-    private String remarks;
-    private Boolean cancel;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date orderTime;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date completionTime;
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date updateTime;
     private String userId;
+
+    public void CopyEntity(BusinessEntity entity, String customerName) {
+        BeanUtils.copyProperties(entity, this);
+        this.customerName = customerName;
+    }
 
 }
