@@ -5,6 +5,8 @@ import com.example.dao.BusinessEntity;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
+import java.util.Date;
+
 
 @Data
 public class BusinessRequest {
@@ -17,6 +19,7 @@ public class BusinessRequest {
     private String currentState;
     private String productType;
     private String material;
+    private Date completionTime;
     private Integer width;
     private Integer height;
     private Integer thickness;

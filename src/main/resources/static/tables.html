@@ -364,7 +364,7 @@
                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
                             onclick='btnSave()'>新增</button>
                     </div>
-
+                    <p>&nbsp;</p>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
 
@@ -381,7 +381,6 @@
                                             <th>当前状态</th>
                                             <th>产品类型</th>
                                             <th>材质</th>
-                                            <th>工艺</th>
                                             <th>宽(毫米)</th>
                                             <th>高(毫米)</th>
                                             <th>厚(毫米)</th>
@@ -646,6 +645,17 @@
     <script src="js/demo/datatables-demo.js"></script>
 
     <script>
+        function repalceNull(tagName) {
+            let tds = document.getElementsByTagName(tagName);
+            for (let i = 0; i < tds.length; ++i) {
+                if (tds[i].innerHTML == "null") {
+                    tds[i].innerHTML = '';
+                }
+            }
+        }
+    </script>
+
+    <script>
         //匿名函数在其它应用场景括号可以省略
         (function () {
             $.ajax({
@@ -675,7 +685,7 @@
                             <td>${data['orderTime']}</td>
                             <td>${data['completionTime']}</td>
                             <td>${data['updateTime']}</td>
-                            <td>${data['userId']}</td>
+                            <td>${data['username']}</td>
                             <td>
                                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
                                     onclick='btnEdit(${data['id']})'
@@ -693,7 +703,10 @@
             })
         })()
 
+        repalceNull('td')
     </script>
+
+
 
     <script>
         function btnEdit(id) {
@@ -738,9 +751,9 @@
         function btnSave() {
 
             $.ajax({
-                url: '/business/' + id,
+                url: '/business/',
                 // data:data,
-                type: 'get',
+                type: 'put',
                 async: false,
                 dataType: 'text',
                 success: function (response) {
@@ -770,6 +783,8 @@
             })
         }
     </script>
+
+
 </body>
 
 </html>
