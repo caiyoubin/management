@@ -362,7 +362,7 @@
 
                     <div>
                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
-                            onclick='btnSave()'>新增</button>
+                            onclick='btnAdd()'>新增</button>
                     </div>
                     <p>&nbsp;</p>
                     <!-- DataTales Example -->
@@ -576,11 +576,10 @@
 
                             </div>
 
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-primary" onClick="btnSave()">保存</button>
+                            <button type="button" class="btn btn-primary" id="btnSave">保存</button>
                         </div>
                     </div>
                 </div>
@@ -710,7 +709,7 @@
 
     <script>
         function btnEdit(id) {
-
+            $('#btnSave').attr("onClick","btnSave('PUT')");
             $.ajax({
                 url: '/business/' + id,
                 // data:data,
@@ -721,7 +720,6 @@
                     response = JSON.parse(response)
                     if (response['code'] == 0) {
                         let data = response['data'];
-                        console.log(data);
                         document.getElementById('entityId').value = data['id'];
                         document.getElementById('itemName').value = data['itemName'];
                         document.getElementById('customerName').value = data['customerName'];
@@ -736,50 +734,55 @@
                         document.getElementById('orderTime').value = data['orderTime'];
                         document.getElementById('completionTime').value = data['completionTime'];
                         // document.getElementById('modal-body').innerHTML = inner;
-
                         document.getElementById('myModalLabel').textContent = '编辑';
-                        // return 到form表单的地址
+                  
                         return true
                     }
                 }
             })
         }
+
+
+        function btnAdd() {
+            document.getElementById('myModalLabel').textContent = '新增';
+            $('#btnSave').attr("onClick","btnSave('POST')");
+        }
     </script>
 
 
     <script>
-        function btnSave() {
+        function btnSave(type) {
+
+            data = {};
+            data['id'] = document.getElementById('entityId').value;
+            data['itemName'] = document.getElementById('itemName').value;
+            data['customerName'] = document.getElementById('customerName').value;
+            data['number'] = document.getElementById('number').value;
+            data['demandType'] = document.getElementById('demandType').value;
+            data['currentState'] = document.getElementById('currentState').value;
+            data['productType'] = document.getElementById('productType').value;
+            data['material'] = document.getElementById('material').value;
+            data['width'] = document.getElementById('width').value;
+            data['height'] = document.getElementById('height').value;
+            data['thickness'] = document.getElementById('thickness').value;
+            data['orderTime'] = document.getElementById('orderTime').value;
+            data['completionTime'] = document.getElementById('completionTime').value;
 
             $.ajax({
-                url: '/business/',
-                // data:data,
-                type: 'put',
-                async: false,
-                dataType: 'text',
+                url: '/business',
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                type: type,
+                async: true,
                 success: function (response) {
-                    response = JSON.parse(response)
-                    if (response['code'] == 0) {
-                        let data = response['data'];
-                        console.log(data);
-                        document.getElementById('entityId').value = data['id'];
-                        document.getElementById('itemName').value = data['itemName'];
-                        document.getElementById('customerName').value = data['customerName'];
-                        document.getElementById('number').value = data['number'];
-                        document.getElementById('demandType').value = data['demandType'];
-                        document.getElementById('currentState').value = data['currentState'];
-                        document.getElementById('productType').value = data['productType'];
-                        document.getElementById('material').value = data['material'];
-                        document.getElementById('width').value = data['width'];
-                        document.getElementById('height').value = data['height'];
-                        document.getElementById('thickness').value = data['thickness'];
-                        document.getElementById('orderTime').value = data['orderTime'];
-                        document.getElementById('completionTime').value = data['completionTime'];
-                        // document.getElementById('modal-body').innerHTML = inner;
-                        document.getElementById('myModalLabel').textContent = '新增';
-                        // return 到form表单的地址
-                        return true
-                    }
+                    $('#myModal').modal('hide');
+                    location.reload(true) 
+                },
+                error: function (response) {
+                    alert(response['responseJSON']['message']);
+                    return true;
                 }
+                
             })
         }
     </script>
