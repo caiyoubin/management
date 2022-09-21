@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "token")
 public class TokenEntity extends BaseEntity{
 
-    private String userId;
+    private String username;
     private String token;
 
 }

@@ -12,30 +12,39 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         final String requestURI = request.getRequestURI();
         String[] ignoreItems = {"login", "static", "index"};
-       if (true){
-           return true;
-       }
-        boolean blacklist = false;
+//       if (true){
+//           return true;
+//       }
 
-        for (String item : ignoreItems) {
+        String[] blackItems = {"tables.html", "index.html"};
+        boolean blacklist = true;
+
+//        for (String item : ignoreItems) {
+//            if (requestURI.contains(item)) {
+//                blacklist = true;
+//                break;
+//            }
+//        }
+
+        for (String item : blackItems) {
             if (requestURI.contains(item)) {
-                blacklist = true;
+                blacklist = false;
                 break;
             }
         }
+
 
         if (blacklist) {
             return true;
         }
         final HttpSession session = request.getSession();
         final Object token = session.getAttribute("token");
-        if (token == null) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("application/json");
-            return false;
+        if (token == null && !requestURI.contains("login.html")) {
+            response.setStatus(HttpServletResponse.SC_FOUND);
+            response.setHeader("Location", "/login.html");
         }
 
-        return HandlerInterceptor.super.preHandle(request, response, handler);
+//        return HandlerInterceptor.super.preHandle(request, response, handler);
+        return true;
     }
 }
