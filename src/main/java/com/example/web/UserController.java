@@ -6,6 +6,7 @@ import com.example.service.TokenService;
 import com.example.service.UsersService;
 import com.example.tools.StrTool;
 import com.example.web.request.UserRequest;
+import com.example.web.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
@@ -25,6 +26,19 @@ public class UserController extends AbstractBaseController {
     TokenService tokenService;
 
 
+    @GetMapping(value = "/userinfo")
+    public Object username(HttpServletRequest request) {
+
+        final HttpSession session = request.getSession();
+        final String nickname = (String) session.getAttribute("nickname");
+        final String username = (String) session.getAttribute("username");
+        UserInfoVo userInfo = new UserInfoVo();
+        userInfo.setNickname(nickname);
+        userInfo.setUsername(username);
+
+        return responseOK(userInfo);
+    }
+
     @PostMapping(value = "/login")
     public Object login(@Validated @RequestBody UserRequest userRequest, HttpServletRequest request) {
 
@@ -39,6 +53,7 @@ public class UserController extends AbstractBaseController {
         final String token = StrTool.getMD5(password);
         session.setAttribute("token", token);
         session.setAttribute("username", username);
+        session.setAttribute("nickname", usersEntity.getNickname());
         final TokenEntity tokenEntity = new TokenEntity();
         tokenEntity.setToken(token);
         tokenEntity.setUsername(username);
