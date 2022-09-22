@@ -5,6 +5,7 @@ import com.example.dao.UsersEntity;
 import com.example.service.TokenService;
 import com.example.service.UsersService;
 import com.example.tools.StrTool;
+import com.example.web.exception.BadRequestException;
 import com.example.web.request.UserRequest;
 import com.example.web.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,22 @@ public class UserController extends AbstractBaseController {
     UsersService usersService;
     @Autowired
     TokenService tokenService;
+
+
+    @PostMapping(value = "/change-password")
+    public Object changePassword(@RequestBody String password, HttpServletRequest request) {
+
+        final HttpSession session = request.getSession();
+        final String username = (String) session.getAttribute("username");
+        if (username == null) {
+            throw new BadRequestException("Please login and try again.");
+        }
+
+        UsersEntity entity = usersService.findByUsername(username);
+        entity.setPassword(password);
+        usersService.save(entity);
+        return responseOK();
+    }
 
 
     @GetMapping(value = "/userinfo")

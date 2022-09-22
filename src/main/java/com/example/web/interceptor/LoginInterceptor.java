@@ -16,7 +16,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 //           return true;
 //       }
 
-        String[] blackItems = {"tables.html", "index.html"};
+        String[] blackItems = {"tables.html", "index.html", "change-password.html"};
         boolean blacklist = true;
 
 //        for (String item : ignoreItems) {

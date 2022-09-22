@@ -16,4 +16,11 @@ public class UsersService extends BaseService<UsersEntity> {
         return repository.findByUsernameAndPassword(username, password);
     }
 
+    public UsersEntity findByUsername(String username) {
+        return repository.findByUsername(username);
+    }
+
+    public void save(UsersEntity entity) {
+        repository.save(entity);
+    }
 }

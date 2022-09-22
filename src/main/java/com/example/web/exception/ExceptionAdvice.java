@@ -2,6 +2,7 @@ package com.example.web.exception;
 
 
 import com.example.common.code.StateCode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @ControllerAdvice
 public class ExceptionAdvice {
 
@@ -21,7 +23,8 @@ public class ExceptionAdvice {
         final HttpExceptionResponse response = new HttpExceptionResponse(StateCode.FAIL, e.getMessage(), request.getRequestURI());
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        e.printStackTrace();
+        log.warn("", e);
+
         return new ResponseEntity<>(response, httpHeaders, badRequest);
     }
 }
