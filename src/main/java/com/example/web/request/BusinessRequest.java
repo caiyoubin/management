@@ -23,7 +23,7 @@ public class BusinessRequest {
     private Integer width;
     private Integer height;
     private Integer thickness;
-
+    private String nickname;
     public BusinessEntity toEntity() {
         final BusinessEntity entity = new BusinessEntity();
         BeanUtils.copyProperties(this, entity);

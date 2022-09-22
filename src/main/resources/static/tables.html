@@ -134,7 +134,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
+                    <span>日常业务</span></a>
             </li>
 
             <!-- Divider -->
@@ -203,34 +203,27 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
+                                </a> -->
+                                <a class="dropdown-item htext-gray-400" href="change-password.html">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2"></i>
+                                    修改密码
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a>
+                                </a> -->
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                <a class="dropdown-item  htext-gray-400" href="#" role="button" id="logout">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
+                                    退出
                                 </a>
                             </div>
                         </li>
 
-                        <li class="nav-item dropdown no-arrow  ">
-                            <a class="nav-link dropdown-toggle text-gray-600" href="#" role="button" id="logout">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
-                                退出
-                            </a>
-
-
-                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
 
                     </ul>
 
@@ -544,7 +537,7 @@
                             <td>${data['orderTime']}</td>
                             <td>${data['completionTime']}</td>
                             <td>${data['updateTime']}</td>
-                            <td>${data['username']}</td>
+                            <td>${data['nickname']}</td>
                             <td>
                                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
                                     onclick='btnEdit(${data['id']})'

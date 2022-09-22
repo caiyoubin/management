@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +54,11 @@ public class BusinessController extends AbstractBaseController {
 
     @Transactional
     @PostMapping
-    public Object createBusiness(@Validated @RequestBody BusinessRequest request) {
-        final BusinessEntity entity = request.toEntity();
+    public Object createBusiness(@Validated @RequestBody BusinessRequest businessRequest, HttpServletRequest request) {
+        final HttpSession session = request.getSession();
+        final String nickname = (String)session.getAttribute("nickname");
+        businessRequest.setNickname(nickname);
+        final BusinessEntity entity = businessRequest.toEntity();
         businessService.save(entity);
         final String itemName = entity.getItemName();
         accountsService.saveByItemId(itemName);
@@ -62,8 +67,11 @@ public class BusinessController extends AbstractBaseController {
 
 
     @PutMapping
-    public Object updateBusiness(@Validated @RequestBody BusinessRequest request) {
-        businessService.update(request);
+    public Object updateBusiness(@Validated @RequestBody BusinessRequest businessRequest, HttpServletRequest request) {
+        final HttpSession session = request.getSession();
+        final String nickname = (String)session.getAttribute("nickname");
+        businessRequest.setNickname(nickname);
+        businessService.update(businessRequest);
         return responseOK();
     }
 
