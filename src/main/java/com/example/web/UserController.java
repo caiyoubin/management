@@ -33,7 +33,7 @@ public class UserController extends AbstractBaseController {
         final HttpSession session = request.getSession();
         final String username = (String) session.getAttribute("username");
         if (username == null) {
-            throw new BadRequestException("Please login and try again.");
+            throw new BadRequestException("请登录后.");
         }
 
         UsersEntity entity = usersService.findByUsername(username);

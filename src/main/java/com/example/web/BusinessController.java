@@ -66,7 +66,7 @@ public class BusinessController extends AbstractBaseController {
         final BusinessEntity entity = businessRequest.toEntity();
         businessService.save(entity);
         final String itemName = entity.getItemName();
-        accountsService.saveByItemId(itemName);
+        accountsService.saveByItemName(itemName);
         return responseOK();
     }
 

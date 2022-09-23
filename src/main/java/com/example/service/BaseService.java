@@ -17,7 +17,7 @@ public class BaseService<T extends BaseEntity> {
         final Optional<T> optional = repository.findById(id);
         final boolean empty = optional.isEmpty();
         if (empty) {
-            throw  new BadRequestException("id " + id + " does not exist");
+            throw  new BadRequestException("id " + id + " 不存在");
         }
         return optional.get();
     }
