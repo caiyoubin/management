@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class CustomersService extends BaseService<CustomersEntity> {
@@ -31,4 +32,11 @@ public class CustomersService extends BaseService<CustomersEntity> {
         return repository.findByCustomerName(customerName);
     }
 
+    public List<CustomersEntity> finAll() {
+        return repository.findAll();
+    }
+
+    public void deleteById(Integer id) {
+        repository.deleteById(id);
+    }
 }

@@ -12,15 +12,16 @@ import javax.validation.constraints.NotBlank;
 public class CustomersRequest {
 
     private Integer id;
-    @NotBlank(message = "company can not be blank")
+    @NotBlank(message = "公司名称不能为空")
     private String company;
+    @NotBlank(message = "部门名称不能为空")
     private String department;
-    @NotBlank(message = "customer can not be blank")
-    private String customer;
-    private Boolean gender;
+    @NotBlank(message = "客户名字不能为空")
+    private String customerName;
+    private Boolean gender = true;
     private String telephone;
     private String address;
-    private Boolean state;
+    private String nickname;
 
 
     public CustomersEntity toEntity() {

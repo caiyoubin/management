@@ -130,20 +130,20 @@
                     <span>Charts</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Business -->
             <li class="nav-item">
                 <a class="nav-link" href="business.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>日常业务</span></a>
             </li>
             <!-- Nav Item - Accounts -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="accounts.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>项目核算</span></a>
             </li>
             <!-- Nav Item - Customers -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="customers.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>客户管理</span></a>
@@ -259,14 +259,12 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>项目名称</th>
-                                            <th>材料费</th>
-                                            <th>人工费</th>
-                                            <th>交通费</th>
-                                            <th>其他费用</th>
-                                            <th>报价</th>
-                                            <th>已开票</th>
-                                            <th>已回款</th>
+                                            <th>公司</th>
+                                            <th>部门</th>
+                                            <th>名字</th>
+                                            <th>性别</th>
+                                            <th>电话</th>
+                                            <th>地址</th>
                                             <th>更新时间</th>
                                             <th>更新者</th>
                                             <th>操作</th>
@@ -324,89 +322,67 @@
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">项目名称</span>
+                                        <span class="text">公司</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="itemName"
-                                        placeholder="itemName">
+                                    <input type="text" class="form-control form-control-user" id="company"
+                                        placeholder="company">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">材料费</span>
+                                        <span class="text">部门</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="materialCost"
-                                        placeholder="materialCost">
+                                    <input type="text" class="form-control form-control-user" id="department"
+                                        placeholder="department">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">人工费</span>
+                                        <span class="text">名字</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="laborCost"
-                                        placeholder="laborCost">
+                                    <input type="text" class="form-control form-control-user" id="customerName"
+                                        placeholder="customerName">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">交通费</span>
+                                        <span class="text">性别</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="trafficExpense"
-                                        placeholder="trafficExpense">
+                                    <input type="text" class="form-control form-control-user" id="gender"
+                                        placeholder="gender">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">其他费用</span>
+                                        <span class="text">电话</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="otherExpense"
-                                        placeholder="otherExpense">
+                                    <input type="text" class="form-control form-control-user" id="telephone"
+                                        placeholder="telephone">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">报价</span>
+                                        <span class="text">地址</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="itemPrice"
-                                        placeholder="itemPrice">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">已开票</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="isBill"
-                                        placeholder="isBill">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">已回款</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="isReturn"
-                                        placeholder="isReturn">
+                                    <input type="text" class="form-control form-control-user" id="address"
+                                        placeholder="address">
                                 </div>
                                 <div class="col-sm-3"></div>
                             </div>
@@ -476,7 +452,7 @@
 
         (function () {
             $.ajax({
-                url: "/api/v1/accounts",
+                url: "/api/v1/customers",
                 // data:data,
                 type: "get",
                 async: false,
@@ -489,14 +465,12 @@
                             let data = allData[i];
                             let trhtml = `<tr>
                             <td>${data['id']}</td>
-                            <td>${data['itemName']}</td>
-                            <td>${data['materialCost']}</td>
-                            <td>${data['laborCost']}</td>
-                            <td>${data['trafficExpense']}</td>
-                            <td>${data['otherExpense']}</td>
-                            <td>${data['itemPrice']}</td>
-                            <td>${data['isBill'] == true ? '是' : '否'}</td>
-                            <td>${data['isReturn'] == true ? '是' : '否'}</td>
+                            <td>${data['company']}</td>
+                            <td>${data['department']}</td>
+                            <td>${data['customerName']}</td>
+                            <td>${data['gender'] == true ? '男' : '女'}</td>
+                            <td>${data['telephone']}</td>
+                            <td>${data['address']}</td>
                             <td>${data['updateTime']}</td>
                             <td>${data['nickname']}</td>
                             <td>
@@ -524,7 +498,7 @@
         function btnEdit(id) {
             $('#btnSave').attr("onClick", "btnSave('PUT')");
             $.ajax({
-                url: '/api/v1/accounts/' + id,
+                url: '/api/v1/customers/' + id,
                 // data:data,
                 type: 'get',
                 async: false,
@@ -534,18 +508,20 @@
                     if (response['code'] == 0) {
                         let data = response['data'];
                         document.getElementById('entityId').value = data['id'];
-                        document.getElementById('itemName').value = data['itemName'];
-                        document.getElementById('materialCost').value = data['materialCost'];
-                        document.getElementById('laborCost').value = data['laborCost'];
-                        document.getElementById('trafficExpense').value = data['trafficExpense'];
-                        document.getElementById('otherExpense').value = data['otherExpense'];
-                        document.getElementById('itemPrice').value = data['itemPrice'];
-                        document.getElementById('isBill').value = data['isBill'] == true ? '是' : '否';
-                        document.getElementById('isReturn').value = data['isReturn'] == true ? '是' : '否';
+                        document.getElementById('company').value = data['company'];
+                        document.getElementById('department').value = data['department'];
+                        document.getElementById('customerName').value = data['customerName'];
+                        document.getElementById('gender').value = data['gender'] == true ? '男' : '女';
+                        document.getElementById('telephone').value = data['telephone'];
+                        document.getElementById('address').value = data['address'];
 
                         document.getElementById('myModalLabel').textContent = '编辑';
                         return true
                     }
+                },
+                error: function (response) {
+                    alert(response['responseJSON']['message']);
+                    return true;
                 }
             })
         }
@@ -562,17 +538,15 @@
         function btnSave(type) {
             data = {};
             data['id'] = document.getElementById('entityId').value;
-            data['itemName'] = document.getElementById('itemName').value;
-            data['materialCost'] = document.getElementById('materialCost').value;
-            data['laborCost'] = document.getElementById('laborCost').value;
-            data['trafficExpense'] = document.getElementById('trafficExpense').value;
-            data['otherExpense'] = document.getElementById('otherExpense').value;
-            data['itemPrice'] = document.getElementById('itemPrice').value;
-            data['isBill'] = document.getElementById('isBill').value == '是' ? true : false;
-            data['isReturn'] = document.getElementById('isReturn').value == '是' ? true : false;
+            data['company'] = document.getElementById('company').value;
+            data['department'] = document.getElementById('department').value;
+            data['customerName'] = document.getElementById('customerName').value;
+            data['gender'] = document.getElementById('gender').value == '女' ? false : true;
+            data['telephone'] = document.getElementById('telephone').value;
+            data['address'] = document.getElementById('address').value;
 
             $.ajax({
-                url: '/api/v1/accounts',
+                url: '/api/v1/customers',
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 type: type,
@@ -641,7 +615,7 @@
             let id = document.getElementById('entityId').value;
 
             $.ajax({
-                url: `/api/v1/accounts/${id}`,
+                url: `/api/v1/customers/${id}`,
                 type: 'DELETE',
                 success: function (response) {
                     location.reload(true);

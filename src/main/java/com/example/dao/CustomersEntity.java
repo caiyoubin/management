@@ -17,9 +17,8 @@ public class CustomersEntity extends BaseEntity{
     private String company;
     private String department;
     private String customerName;
-    private Boolean gender;
+    private Boolean gender = true;
     private String telephone;
     private String address;
-    private Boolean state = false;
 
 }

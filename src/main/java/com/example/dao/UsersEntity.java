@@ -18,7 +18,7 @@ public class UsersEntity extends BaseEntity{
     private String username;
     private String password;
     private String nickname;
-    private Boolean gender;
+    private Boolean gender = true;
     private Boolean isEdit;
     private Boolean isAdmin;
     private Boolean state;
