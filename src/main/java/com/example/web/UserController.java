@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/api/v1/users")
 public class UserController extends AbstractBaseController {
 
 
@@ -52,7 +52,6 @@ public class UserController extends AbstractBaseController {
         UserInfoVo userInfo = new UserInfoVo();
         userInfo.setNickname(nickname);
         userInfo.setUsername(username);
-
         return responseOK(userInfo);
     }
 

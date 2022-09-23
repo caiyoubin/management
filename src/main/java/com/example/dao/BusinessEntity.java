@@ -33,6 +33,5 @@ public class BusinessEntity extends BaseEntity{
     private Date orderTime;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date completionTime;
-    private String nickname;
 
 }

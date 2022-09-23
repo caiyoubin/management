@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="user">
                                         <div class="form-group">
-                                            <input type="username" class="form-control form-control-user" id="username"
+                                            <input class="form-control form-control-user" id="username"
                                                 name="username" placeholder="请输入账号">
                                         </div>
                                         <div class="form-group">
@@ -89,7 +89,7 @@
             data['password'] = password;
 
             $.ajax({
-                url: "/users/login",
+                url: "/api/v1/users/login",
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 type: "POST",
@@ -107,7 +107,6 @@
                 },
                 error: function (response) {
                     console.log("err")
-                    console.error("xxxx")
                     console.log(response)
                     alert(response['responseJSON']['message']);
                     // return true;

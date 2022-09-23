@@ -18,14 +18,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/business")
+@RequestMapping(value = "/api/v1/business")
 public class BusinessController extends AbstractBaseController {
 
     @Autowired
     BusinessService businessService;
     @Autowired
     AccountsService accountsService;
-
     @Autowired
     CustomersService customersService;
 
@@ -50,6 +49,12 @@ public class BusinessController extends AbstractBaseController {
         final BusinessVo vo = new BusinessVo();
         vo.CopyEntity(entity, customer.getCustomerName());
         return responseOK(vo);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public Object deleteById(@PathVariable Integer id) {
+        businessService.deleteById(id);
+        return responseOK();
     }
 
     @Transactional

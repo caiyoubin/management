@@ -136,6 +136,12 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>日常业务</span></a>
             </li>
+            <!-- Nav Item - Accounts -->
+            <li class="nav-item active">
+                <a class="nav-link" href="accounts.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>项目核算</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -202,7 +208,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                 aria-labelledby="userDropdown">
+                                aria-labelledby="userDropdown">
                                 <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -246,7 +252,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th class="sorting sorting_desc">Id</th>
+                                            <th>Id</th>
                                             <th>项目名称</th>
                                             <th>接口人</th>
                                             <th>数量</th>
@@ -451,6 +457,8 @@
 
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" onclick="btnDelete()">删除</button>
+                            <button type="button" class="btn btn-default" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                             <button type="button" class="btn btn-primary" id="btnSave">保存</button>
                         </div>
@@ -511,7 +519,7 @@
         //匿名函数在其它应用场景括号可以省略
         (function () {
             $.ajax({
-                url: "/business",
+                url: "/api/v1/business",
                 // data:data,
                 type: "get",
                 async: false,
@@ -540,8 +548,7 @@
                             <td>${data['nickname']}</td>
                             <td>
                                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
-                                    onclick='btnEdit(${data['id']})'
-                                    >编辑</button>
+                                    onclick='btnEdit(${data['id']})'>编辑</button>
                             </td>
                             </tr>
                             `
@@ -562,7 +569,7 @@
         function btnEdit(id) {
             $('#btnSave').attr("onClick", "btnSave('PUT')");
             $.ajax({
-                url: '/business/' + id,
+                url: '/api/v1/business/' + id,
                 // data:data,
                 type: 'get',
                 async: false,
@@ -620,7 +627,7 @@
             data['completionTime'] = document.getElementById('completionTime').value;
 
             $.ajax({
-                url: '/business',
+                url: '/api/v1/business',
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 type: type,
@@ -642,7 +649,7 @@
         let logout = document.getElementById("logout");
         logout.onclick = function () {
             $.ajax({
-                url: '/users/logout',
+                url: '/api/v1/users/logout',
                 contentType: "application/json",
                 type: 'GET',
                 success: function (response) {
@@ -653,29 +660,55 @@
 
             })
         }
+    </script>
+
+    <script>
+            (function () {
+                $.ajax({
+                    url: '/api/v1/users/userinfo',
+                    contentType: "application/json",
+                    type: 'GET',
+                    success: function (response) {
+                        document.getElementById('nickname').innerText = response.data.nickname;
+                    },
+                    error: function (response) {
+                    }
+
+                })
+
+            })()
 
     </script>
 
-<script>
-    (function () {
-        console.log("xxx")
-
-        $.ajax({
-            url: '/users/userinfo',
-            contentType: "application/json",
-            type: 'GET',
-            success: function (response) {
-               document.getElementById('nickname').innerText = response.data.nickname;
-            },
-            error: function (response) {
-            }
-
+    <script>
+        // id倒序排序
+        window.onload = (function () {
+            document.querySelector('th').click();
         })
-        
-    })()
+    </script>
 
-</script>
+    <script>
 
+
+  function btnDelete() {
+            document.getElementById('myModalLabel').textContent = '新增';
+            let id = document.getElementById('entityId').value;
+
+            $.ajax({
+                    url: `/api/v1/business/${id}`,
+                    type: 'DELETE',
+                    success: function (response) {
+                        location.reload(true);
+                    },
+                    error: function (response) {
+                        console.log(responsej);
+                    }
+
+                })
+
+        }
+
+    </script>
 </body>
 
 </html>

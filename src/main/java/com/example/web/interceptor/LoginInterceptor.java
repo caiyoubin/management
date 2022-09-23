@@ -16,7 +16,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 //           return true;
 //       }
 
-        String[] blackItems = {"business.html", "index.html", "change-password.html"};
+        String[] blackItems = {"/api/v1", "business.html", "index.html", "change-password.html", "accounts.html"};
         boolean blacklist = true;
 
 //        for (String item : ignoreItems) {

@@ -45,4 +45,8 @@ public class BusinessService extends BaseService<BusinessEntity> {
     public List<BusinessEntity> findByAll() {
         return repository.findAll();
     }
+
+    public void deleteById(Integer id) {
+        repository.deleteById(id);
+    }
 }
