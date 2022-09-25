@@ -9,12 +9,12 @@ public class IndexController {
 
     @RequestMapping("/")
     public String homePage() {
-        return "index";
+        return "home";
     }
 
     @RequestMapping("/index")
     public String index() {
-        return "index";
+        return "home";
     }
 
 }
