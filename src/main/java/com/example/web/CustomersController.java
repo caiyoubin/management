@@ -46,7 +46,7 @@ public class CustomersController extends AbstractBaseController {
         final String nickname = (String)session.getAttribute("nickname");
         final CustomersEntity entity = customersRequest.toEntity();
         entity.setNickname(nickname);
-        customersService.save(entity);
+        customersService.create(entity);
         return responseOK();
     }
 

@@ -6,4 +6,6 @@ public interface UsersRepository extends BaseRepository<UsersEntity> {
 
     UsersEntity findByUsername(String username);
 
+    UsersEntity findByNickname(String nickname);
+
 }

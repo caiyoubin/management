@@ -52,9 +52,7 @@ public class UserController extends AbstractBaseController {
 
     @PostMapping
     public Object createEntity(@Validated @RequestBody UserCreateRequest userCreateRequest) {
-        final UsersEntity entity = userCreateRequest.toEntity();
-        entity.setPassword("123456");
-        usersService.save(entity);
+        usersService.create(userCreateRequest);
         return responseOK();
     }
 
