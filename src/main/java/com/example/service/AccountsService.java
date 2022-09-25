@@ -58,7 +58,19 @@ public class AccountsService extends BaseService<AccountsEntity> {
         return repository.incomeSum();
     }
 
-    public List<Map<String, Object>> incomeMonth() {
-        return repository.incomeMonth();
+
+    public Double[] incomeMonth() {
+        final List<Map<String, Object>> maps = repository.incomeMonth();
+        final int month = Calendar.getInstance().get(Calendar.MONTH)+1;
+        final Double[] ints = new Double[month];
+        for (int i = 0; i < month; ++i) {
+            ints[i] = 0.0;
+        }
+        for (Map<String, Object> map : maps) {
+            final Integer key = (Integer)map.get("month");
+            final Double value = (Double)map.get("price");
+            ints[key-1] = value;
+        }
+        return ints;
     }
 }

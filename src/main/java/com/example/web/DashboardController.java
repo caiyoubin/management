@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -36,7 +35,7 @@ public class DashboardController extends AbstractBaseController {
         int sum = customersService.countCustomers();
         int current =  businessService.currentMonthCustomers();
         Map<String, Integer> map = new HashMap<>();
-        map.put("customers", sum);
+        map.put("customers", sum-current);
         map.put("current", current);
         return responseOK(map);
     }
@@ -45,7 +44,7 @@ public class DashboardController extends AbstractBaseController {
     public Object orderCount() {
         int sum = businessService.orderCount();
         Map<String, Integer> map = new HashMap<>();
-        map.put("customers", sum);
+        map.put("orderCount", sum);
         return responseOK(map);
     }
 
@@ -53,13 +52,13 @@ public class DashboardController extends AbstractBaseController {
     public Object incomeSum() {
         int sum = accountsService.incomeSum();
         Map<String, Integer> map = new HashMap<>();
-        map.put("customers", sum);
+        map.put("incomeSum", sum);
         return responseOK(map);
     }
 
     @GetMapping("/accounts/income/month")
     public Object incomeMonth() {
-        List<Map<String, Object>> vos = accountsService.incomeMonth();
-        return responseOK(vos);
+        Double[] doubles = accountsService.incomeMonth();
+        return responseOK(doubles);
     }
 }
