@@ -5,11 +5,11 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class UserRequest {
+public class UserLoginRequest {
 
-    @NotBlank(message = "username can not be blank")
+    @NotBlank(message = "账号不能为空")
     private String username;
-    @NotBlank(message = "password can not be blank")
+    @NotBlank(message = "密码不能为空")
     private String password;
 
 }

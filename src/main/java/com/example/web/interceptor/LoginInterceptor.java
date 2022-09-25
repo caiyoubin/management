@@ -11,20 +11,13 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         final String requestURI = request.getRequestURI();
-        String[] ignoreItems = {"login", "static", "index"};
+
 //       if (true){
 //           return true;
 //       }
 
-        String[] blackItems = {"/api/v1", "business.html", "index.html", "change-password.html", "accounts.html", "customers.html"};
+        String[] blackItems = {"/api/v1", "business.html", "index.html", "change-password.html", "accounts.html", "customers.html", "users.html"};
         boolean blacklist = true;
-
-//        for (String item : ignoreItems) {
-//            if (requestURI.contains(item)) {
-//                blacklist = true;
-//                break;
-//            }
-//        }
 
         for (String item : blackItems) {
             if (requestURI.contains(item)) {
@@ -33,10 +26,19 @@ public class LoginInterceptor implements HandlerInterceptor {
             }
         }
 
+        String[] ignoreItems = {"login", "static"};
+
+        for (String item : ignoreItems) {
+            if (requestURI.contains(item)) {
+                blacklist = true;
+                break;
+            }
+        }
 
         if (blacklist) {
             return true;
         }
+
         final HttpSession session = request.getSession();
         final Object token = session.getAttribute("token");
         if (token == null && !requestURI.contains("login.html")) {
@@ -44,7 +46,6 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.setHeader("Location", "/login.html");
         }
 
-//        return HandlerInterceptor.super.preHandle(request, response, handler);
         return true;
     }
 }

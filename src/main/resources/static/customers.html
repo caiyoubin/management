@@ -148,6 +148,12 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>客户管理</span></a>
             </li>
+            <!-- Nav Item - Users -->
+            <li class="nav-item">
+                <a class="nav-link" href="users.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>用户中心</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -209,7 +215,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nickname">用户名称</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="loginName">用户名称</span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -246,7 +252,7 @@
                 <div class="container-fluid">
 
                     <div>
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
+                        <button type="button" class="btn btn-primary btn-lg btn-disabled" data-toggle="modal" data-target="#myModal"
                             onclick='btnAdd()'>新增</button>
                     </div>
                     <p>&nbsp;</p>
@@ -474,9 +480,8 @@
                             <td>${data['updateTime']}</td>
                             <td>${data['nickname']}</td>
                             <td>
-                                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
-                                    onclick='btnEdit(${data['id']})'
-                                    >编辑</button>
+                                <button type='button' class='btn btn-primary btn-lg btn-disabled' data-toggle='modal' data-target='#myModal'
+                                onclick='btnEdit(${data['id']})'>编辑</button>
                             </td>
                             </tr>
                             `
@@ -584,21 +589,20 @@
 
     <script>
             (function () {
-
                 $.ajax({
                     url: '/api/v1/users/userinfo',
                     contentType: "application/json",
                     type: 'GET',
                     success: function (response) {
-                        document.getElementById('nickname').innerText = response.data.nickname;
-                    },
-                    error: function (response) {
+                        document.getElementById('loginName').innerText = response.data.nickname;
+                        let flag = response.data.edit;
+                        let btns = document.getElementsByClassName('btn-disabled');
+                        for (let i = 0; i < btns.length; ++i) {
+                            btns[i].disabled = !flag;
+                        }
                     }
-
                 })
-
             })()
-
     </script>
 
     <script>

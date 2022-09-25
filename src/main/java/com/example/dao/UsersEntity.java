@@ -6,7 +6,6 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -18,11 +17,8 @@ public class UsersEntity extends BaseEntity{
     private String username;
     private String password;
     private String nickname;
-    private Boolean gender = true;
-    private Boolean isEdit;
-    private Boolean isAdmin;
-    private Boolean state;
-    private Date entryTime;
-    private Date departureTime;
+    private String telephone;
+    private Boolean edit;
+    private Boolean admin;
 
 }

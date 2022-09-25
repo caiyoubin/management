@@ -131,7 +131,7 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="business.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>日常业务</span></a>
@@ -149,7 +149,7 @@
                     <span>客户管理</span></a>
             </li>
             <!-- Nav Item - Users -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="users.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>用户中心</span></a>
@@ -265,20 +265,11 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
-                                            <th>项目名称</th>
-                                            <th>接口人</th>
-                                            <th>数量</th>
-                                            <th>需求类型</th>
-                                            <th>当前状态</th>
-                                            <th>产品类型</th>
-                                            <th>材质</th>
-                                            <th>宽(毫米)</th>
-                                            <th>高(毫米)</th>
-                                            <th>厚(毫米)</th>
-                                            <th>接单日期</th>
-                                            <th>完成日期</th>
-                                            <th>更新时间</th>
-                                            <th>更新者</th>
+                                            <th>账号</th>
+                                            <th>昵称</th>
+                                            <th>电话</th>
+                                            <th>编辑权限</th>
+                                            <th>管理员权限</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -334,137 +325,58 @@
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">项目名称</span>
+                                        <span class="text">账号</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="itemName"
-                                        placeholder="itemName">
+                                    <input type="text" class="form-control form-control-user" id="username"
+                                        placeholder="username">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">客户</span>
+                                        <span class="text">昵称</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="customerName"
-                                        placeholder="customerName">
+                                    <input type="text" class="form-control form-control-user" id="nickname"
+                                        placeholder="nickname">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">数量</span>
+                                        <span class="text">电话</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="number"
-                                        placeholder="number">
+                                    <input type="text" class="form-control form-control-user" id="telephone"
+                                        placeholder="telephone">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">需求类型</span>
+                                        <span class="text">编辑权限</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="demandType"
-                                        placeholder="demandType">
+                                    <input type="text" class="form-control form-control-user" id="edit"
+                                        placeholder="edit">
                                 </div>
                                 <div class="col-sm-3"></div>
 
                                 <div class="col-sm-3 mb-3 mb-sm-0">
                                     <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">当前状态</span>
+                                        <span class="text">管理员权限</span>
                                     </button>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="currentState"
-                                        placeholder="currentState">
+                                    <input type="text" class="form-control form-control-user" id="admin"
+                                        placeholder="admin">
                                 </div>
                                 <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">产品类型</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="productType"
-                                        placeholder="productType">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">材质</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="material"
-                                        placeholder="material">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">宽(毫米)</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="width"
-                                        placeholder="width">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">高(毫米)</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="height"
-                                        placeholder="height">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">厚(毫米)</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="thickness"
-                                        placeholder="thickness">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">接单日期</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="orderTime"
-                                        placeholder="orderTime">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-                                <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <button disabled="disabled" class="btn btn-light btn-icon-split">
-                                        <span class="text">完成日期</span>
-                                    </button>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" id="completionTime"
-                                        placeholder="completionTime">
-                                </div>
-                                <div class="col-sm-3"></div>
-
-
                             </div>
 
                         </div>
@@ -529,9 +441,10 @@
 
     <script>
         //匿名函数在其它应用场景括号可以省略
+
         (function () {
             $.ajax({
-                url: "/api/v1/business",
+                url: "/api/v1/users",
                 // data:data,
                 type: "get",
                 async: false,
@@ -544,20 +457,11 @@
                             let data = allData[i];
                             let trhtml = `<tr>
                             <td>${data['id']}</td>
-                            <td>${data['itemName']}</td>
-                            <td>${data['customerName']}</td>
-                            <td>${data['number']}</td>
-                            <td>${data['demandType']}</td>
-                            <td>${data['currentState']}</td>
-                            <td>${data['productType']}</td>
-                            <td>${data['material']}</td>
-                            <td>${data['width']}</td>
-                            <td>${data['height']}</td>
-                            <td>${data['thickness']}</td>
-                            <td>${data['orderTime']}</td>
-                            <td>${data['completionTime']}</td>
-                            <td>${data['updateTime']}</td>
+                            <td>${data['username']}</td>
                             <td>${data['nickname']}</td>
+                            <td>${data['telephone']}</td>
+                            <td>${data['edit'] == true ? '是' : '否'}</td>
+                            <td>${data['admin'] == true ? '是' : '否'}</td>
                             <td>
                                 <button type='button' class='btn btn-primary btn-lg btn-disabled' data-toggle='modal' data-target='#myModal'
                                 onclick='btnEdit(${data['id']})'>编辑</button>
@@ -574,14 +478,15 @@
             })
         })()
 
-        repalceNull('td')
+        // 把<td>中值为null的替换为""
+        repalceNull('td');
     </script>
 
     <script>
         function btnEdit(id) {
             $('#btnSave').attr("onClick", "btnSave('PUT')");
             $.ajax({
-                url: '/api/v1/business/' + id,
+                url: '/api/v1/users/' + id,
                 // data:data,
                 type: 'get',
                 async: false,
@@ -591,21 +496,13 @@
                     if (response['code'] == 0) {
                         let data = response['data'];
                         document.getElementById('entityId').value = data['id'];
-                        document.getElementById('itemName').value = data['itemName'];
-                        document.getElementById('customerName').value = data['customerName'];
-                        document.getElementById('number').value = data['number'];
-                        document.getElementById('demandType').value = data['demandType'];
-                        document.getElementById('currentState').value = data['currentState'];
-                        document.getElementById('productType').value = data['productType'];
-                        document.getElementById('material').value = data['material'];
-                        document.getElementById('width').value = data['width'];
-                        document.getElementById('height').value = data['height'];
-                        document.getElementById('thickness').value = data['thickness'];
-                        document.getElementById('orderTime').value = data['orderTime'];
-                        document.getElementById('completionTime').value = data['completionTime'];
-                        // document.getElementById('modal-body').innerHTML = inner;
-                        document.getElementById('myModalLabel').textContent = '编辑';
+                        document.getElementById('username').value = data['username'];
+                        document.getElementById('nickname').value = data['nickname'];
+                        document.getElementById('telephone').value = data['telephone'];
+                        document.getElementById('edit').value = data['edit'] == true ? '是' : '否';
+                        document.getElementById('admin').value = data['admin'] == true ? '是' : '否';
 
+                        document.getElementById('myModalLabel').textContent = '编辑';
                         return true
                     }
                 }
@@ -622,24 +519,16 @@
 
     <script>
         function btnSave(type) {
-
             data = {};
             data['id'] = document.getElementById('entityId').value;
-            data['itemName'] = document.getElementById('itemName').value;
-            data['customerName'] = document.getElementById('customerName').value;
-            data['number'] = document.getElementById('number').value;
-            data['demandType'] = document.getElementById('demandType').value;
-            data['currentState'] = document.getElementById('currentState').value;
-            data['productType'] = document.getElementById('productType').value;
-            data['material'] = document.getElementById('material').value;
-            data['width'] = document.getElementById('width').value;
-            data['height'] = document.getElementById('height').value;
-            data['thickness'] = document.getElementById('thickness').value;
-            data['orderTime'] = document.getElementById('orderTime').value;
-            data['completionTime'] = document.getElementById('completionTime').value;
+            data['username'] = document.getElementById('username').value;
+            data['nickname'] = document.getElementById('nickname').value;
+            data['telephone'] = document.getElementById('telephone').value;
+            data['edit'] = document.getElementById('edit').value == '是' ? true : false;
+            data['admin'] = document.getElementById('admin').value == '是' ? true : false;
 
             $.ajax({
-                url: '/api/v1/business',
+                url: '/api/v1/users',
                 contentType: "application/json",
                 data: JSON.stringify(data),
                 type: type,
@@ -672,6 +561,7 @@
 
             })
         }
+
     </script>
 
     <script>
@@ -682,7 +572,7 @@
                     type: 'GET',
                     success: function (response) {
                         document.getElementById('loginName').innerText = response.data.nickname;
-                        let flag = response.data.edit;
+                        let flag = response.data.admin;
                         let btns = document.getElementsByClassName('btn-disabled');
                         for (let i = 0; i < btns.length; ++i) {
                             btns[i].disabled = !flag;
@@ -701,23 +591,20 @@
 
     <script>
 
-
         function btnDelete() {
             document.getElementById('myModalLabel').textContent = '新增';
             let id = document.getElementById('entityId').value;
 
             $.ajax({
-                url: `/api/v1/business/${id}`,
+                url: `/api/v1/users/${id}`,
                 type: 'DELETE',
                 success: function (response) {
                     location.reload(true);
                 },
                 error: function (response) {
-                    console.log(response);
+                    console.log('error: ' + response)
                 }
-
             })
-
         }
 
     </script>

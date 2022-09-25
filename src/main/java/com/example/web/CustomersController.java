@@ -20,7 +20,7 @@ public class CustomersController extends AbstractBaseController {
 
 
     @GetMapping
-    public Object selectAllAccounts() {
+    public Object selectAll() {
         List<CustomersEntity> entities = customersService.finAll();
         return responseOK(entities);
     }
