@@ -10,6 +10,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -49,4 +50,16 @@ public class BusinessService extends BaseService<BusinessEntity> {
     public void deleteById(Integer id) {
         repository.deleteById(id);
     }
+
+    public int orderCount() {
+        return repository.orderCount();
+    }
+
+    public int currentMonthCustomers() {
+        final Calendar calendar = Calendar.getInstance();
+        final int month = calendar.get(Calendar.MONTH) + 1;
+        final int year = calendar.get(Calendar.YEAR);
+        return repository.currentMonthCustomers(year, month);
+    }
+
 }

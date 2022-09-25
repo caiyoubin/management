@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class AccountsService extends BaseService<AccountsEntity> {
@@ -53,5 +52,13 @@ public class AccountsService extends BaseService<AccountsEntity> {
         BeanUtils.copyProperties(accountsRequest, entity);
         entity.setUpdateTime(new Date());
         repository.save(entity);
+    }
+
+    public int incomeSum() {
+        return repository.incomeSum();
+    }
+
+    public List<Map<String, Object>> incomeMonth() {
+        return repository.incomeMonth();
     }
 }
