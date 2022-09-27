@@ -15,14 +15,14 @@ import java.util.*;
 public class AccountsService extends BaseService<AccountsEntity> {
 
     @Autowired
-    AccountsRepository repository;
+    AccountsRepository accountsRepository;
 
     public void saveByItemName(String itemName) {
-        AccountsEntity entity = repository.findByItemName(itemName);
+        AccountsEntity entity = accountsRepository.findByItemName(itemName);
         if (ObjectUtils.isEmpty(entity)) {
             entity = new AccountsEntity();
             entity.setItemName(itemName);
-            repository.save(entity);
+            accountsRepository.save(entity);
         }
     }
 
@@ -32,32 +32,32 @@ public class AccountsService extends BaseService<AccountsEntity> {
         BeanUtils.copyProperties(request, entity);
         entity.setItemName(itemName);
         entity.setUpdateTime(new Date());
-        repository.save(entity);
+        accountsRepository.save(entity);
     }
 
     public List<AccountsEntity> finAll() {
-        return repository.findAll();
+        return accountsRepository.findAll();
     }
 
 
     public void save(AccountsRequest accountsRequest) {
-        AccountsEntity entity = repository.findByItemName(accountsRequest.getItemName());
+        AccountsEntity entity = accountsRepository.findByItemName(accountsRequest.getItemName());
         if (entity != null) {
             throw new BadRequestException("项目名称已存在");
         }
         entity = new AccountsEntity();
         BeanUtils.copyProperties(accountsRequest, entity);
         entity.setUpdateTime(new Date());
-        repository.save(entity);
+        accountsRepository.save(entity);
     }
 
     public int incomeSum() {
-        return repository.incomeSum();
+        return accountsRepository.incomeSum();
     }
 
 
     public Double[] incomeMonth() {
-        final List<Map<String, Object>> maps = repository.incomeMonth();
+        final List<Map<String, Object>> maps = accountsRepository.incomeMonth();
         final int month = Calendar.getInstance().get(Calendar.MONTH)+1;
         final Double[] ints = new Double[month];
         for (int i = 0; i < month; ++i) {

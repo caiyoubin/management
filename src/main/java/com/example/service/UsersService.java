@@ -17,7 +17,7 @@ import java.util.List;
 public class UsersService extends BaseService<UsersEntity> {
 
     @Autowired
-    UsersRepository repository;
+    UsersRepository usersRepository;
 
     public boolean checkUsername(String name) {
         final UsersEntity entity = findByUsername(name);
@@ -25,26 +25,26 @@ public class UsersService extends BaseService<UsersEntity> {
     }
 
     public boolean checkNickname(String name) {
-        final UsersEntity entity = repository.findByNickname(name);
+        final UsersEntity entity = usersRepository.findByNickname(name);
         return !ObjectUtils.isEmpty(entity);
     }
 
     public UsersEntity findByUsernameAndPassword(String username, String password) {
-        return repository.findByUsernameAndPassword(username, password);
+        return usersRepository.findByUsernameAndPassword(username, password);
     }
 
     public UsersEntity findByUsername(String username) {
-        return repository.findByUsername(username);
+        return usersRepository.findByUsername(username);
     }
 
     public void save(UsersEntity entity) {
 
 
-        repository.save(entity);
+        usersRepository.save(entity);
     }
 
     public List<UsersEntity> finAll() {
-        return repository.findAll();
+        return usersRepository.findAll();
     }
 
     public void deleteById(Integer id) {
@@ -53,7 +53,7 @@ public class UsersService extends BaseService<UsersEntity> {
         if (username.equalsIgnoreCase("Admin")) {
             return;
         }
-        repository.deleteById(id);
+        usersRepository.deleteById(id);
     }
 
     public void update(UserUpdateRequest userRequest) {
@@ -79,7 +79,7 @@ public class UsersService extends BaseService<UsersEntity> {
 
         BeanUtils.copyProperties(userRequest, entity);
         entity.setUpdateTime(new Date());
-        repository.save(entity);
+        usersRepository.save(entity);
     }
 
     public void create(UserCreateRequest userRequest) {
@@ -96,6 +96,6 @@ public class UsersService extends BaseService<UsersEntity> {
 
         final UsersEntity entity = userRequest.toEntity();
         entity.setPassword("123456");
-        repository.save(entity);
+        usersRepository.save(entity);
     }
 }

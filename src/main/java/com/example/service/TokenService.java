@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class TokenService extends BaseService<UsersEntity> {
 
     @Autowired
-    TokenRepository repository;
+    TokenRepository tokenRepository;
 
     public void save(TokenEntity entity) {
-        repository.save(entity);
+        tokenRepository.save(entity);
     }
 }

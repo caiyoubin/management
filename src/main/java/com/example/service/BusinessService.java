@@ -17,7 +17,7 @@ import java.util.List;
 public class BusinessService extends BaseService<BusinessEntity> {
 
     @Autowired
-    BusinessRepository repository;
+    BusinessRepository businessRepository;
     @Autowired
     CustomersRepository customersRepository;
     @Autowired
@@ -29,7 +29,7 @@ public class BusinessService extends BaseService<BusinessEntity> {
         if (customersEntity == null) {
             throw new BadRequestException(customerName + " 不存在于客户列表, 请前往添加.");
         }
-        repository.save(entity);
+        businessRepository.save(entity);
     }
 
     public void update(BusinessRequest request) {
@@ -43,12 +43,12 @@ public class BusinessService extends BaseService<BusinessEntity> {
         final String oldItemName = entity.getItemName();
         BeanUtils.copyProperties(request, entity);
         entity.setUpdateTime(new Date());
-        repository.save(entity);
+        businessRepository.save(entity);
 
         if (!oldItemName.equals(newItemName)) {
-            List<BusinessEntity> entities = repository.findByItemName(oldItemName);
+            List<BusinessEntity> entities = businessRepository.findByItemName(oldItemName);
             entities.forEach(e -> e.setItemName(newItemName));
-            repository.saveAll(entities);
+            businessRepository.saveAll(entities);
 
             AccountsEntity accountsEntity = accountsRepository.findByItemName(oldItemName);
             accountsEntity.setItemName(newItemName);
@@ -57,29 +57,29 @@ public class BusinessService extends BaseService<BusinessEntity> {
     }
 
     public List<BusinessEntity> findByAll() {
-        return repository.findAll();
+        return businessRepository.findAll();
     }
 
     @Transactional
     public void deleteById(Integer id) {
         final BusinessEntity entity = findById(id);
         final String itemName = entity.getItemName();
-        repository.deleteById(id);
-        final List<BusinessEntity> entities = repository.findByItemName(itemName);
+        businessRepository.deleteById(id);
+        final List<BusinessEntity> entities = businessRepository.findByItemName(itemName);
         if (ObjectUtils.isEmpty(entities)) {
             accountsRepository.deleteByItemName(itemName);
         }
     }
 
     public int orderCount() {
-        return repository.orderCount();
+        return businessRepository.orderCount();
     }
 
     public int currentMonthCustomers() {
         final Calendar calendar = Calendar.getInstance();
         final int month = calendar.get(Calendar.MONTH) + 1;
         final int year = calendar.get(Calendar.YEAR);
-        return repository.currentMonthCustomers(year, month);
+        return businessRepository.currentMonthCustomers(year, month);
     }
 
 }

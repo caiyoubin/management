@@ -16,7 +16,7 @@ import java.util.List;
 public class CustomersService extends BaseService<CustomersEntity> {
 
     @Autowired
-    CustomersRepository repository;
+    CustomersRepository customersRepository;
 
     public boolean checkCustomerName(String name) {
         final CustomersEntity entity = findByCustomerName(name);
@@ -28,7 +28,7 @@ public class CustomersService extends BaseService<CustomersEntity> {
         if (checkCustomerName(customerName)) {
             throw new BadRequestException(customerName + " 已存在");
         }
-        repository.save(entity);
+        customersRepository.save(entity);
     }
 
 
@@ -43,23 +43,23 @@ public class CustomersService extends BaseService<CustomersEntity> {
         }
         BeanUtils.copyProperties(request, entity);
         entity.setUpdateTime(new Date());
-        repository.save(entity);
+        customersRepository.save(entity);
     }
 
     public CustomersEntity findByCustomerName(String customerName) {
-        return repository.findByCustomerName(customerName);
+        return customersRepository.findByCustomerName(customerName);
     }
 
     public List<CustomersEntity> finAll() {
-        return repository.findAll();
+        return customersRepository.findAll();
     }
 
     public void deleteById(Integer id) {
-        repository.deleteById(id);
+        customersRepository.deleteById(id);
     }
 
     public int countCustomers() {
-        final List<CustomersEntity> all = repository.findAll();
+        final List<CustomersEntity> all = customersRepository.findAll();
         return all.size();
     }
 }
