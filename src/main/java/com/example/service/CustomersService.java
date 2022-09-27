@@ -54,9 +54,6 @@ public class CustomersService extends BaseService<CustomersEntity> {
         return customersRepository.findAll();
     }
 
-    public void deleteById(Integer id) {
-        customersRepository.deleteById(id);
-    }
 
     public int countCustomers() {
         final List<CustomersEntity> all = customersRepository.findAll();

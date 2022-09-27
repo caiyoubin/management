@@ -319,8 +319,6 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" onclick="btnDelete()">删除</button>
-                            <button type="button" class="btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                             <button type="button" class="btn btn-primary" id="btnSave">保存</button>
                         </div>
@@ -537,25 +535,6 @@
         })
     </script>
 
-    <script>
-
-        function btnDelete() {
-            document.getElementById('myModalLabel').textContent = '新增';
-            let id = document.getElementById('entityId').value;
-
-            $.ajax({
-                url: `/api/v1/customers/${id}`,
-                type: 'DELETE',
-                success: function (response) {
-                    location.reload(true);
-                },
-                error: function (response) {
-                    console.log(response);
-                }
-            })
-        }
-
-    </script>
 </body>
 
 </html>
