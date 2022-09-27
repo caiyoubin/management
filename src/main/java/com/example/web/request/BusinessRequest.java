@@ -13,6 +13,7 @@ public class BusinessRequest {
 
     private Integer id;
     private String itemName;
+    private String detail;
     private Integer number;
     private String demandType;
     private String customerName;

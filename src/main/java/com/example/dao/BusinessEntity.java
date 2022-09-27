@@ -18,6 +18,7 @@ import java.util.Date;
 public class BusinessEntity extends BaseEntity{
 
     private String itemName;
+    private String detail;
     private String customerName;
     private Integer number;
     private String demandType;
@@ -27,7 +28,6 @@ public class BusinessEntity extends BaseEntity{
     private Integer width;
     private Integer height;
     private Integer thickness;
-    private Boolean cancel;
     @CreationTimestamp
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date orderTime;

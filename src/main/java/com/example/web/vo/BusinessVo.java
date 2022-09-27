@@ -12,6 +12,7 @@ public class BusinessVo {
 
     private Integer id;
     private String itemName;
+    private String detail;
     private String customerName;
     private Integer number;
     private String demandType;

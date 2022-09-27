@@ -39,9 +39,6 @@ public class AccountsService extends BaseService<AccountsEntity> {
         return repository.findAll();
     }
 
-    public void deleteById(Integer id) {
-        repository.deleteById(id);
-    }
 
     public void save(AccountsRequest accountsRequest) {
         AccountsEntity entity = repository.findByItemName(accountsRequest.getItemName());

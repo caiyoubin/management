@@ -1,11 +1,14 @@
 package com.example.dao;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -22,5 +25,8 @@ public class AccountsEntity extends BaseEntity{
     private Double itemPrice;
     private Boolean isBill=false;
     private Boolean isReturn=false;
+    @CreationTimestamp
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
+    private Date orderTime;
 
 }

@@ -33,12 +33,6 @@ public class AccountsController extends AbstractBaseController {
     }
 
 
-    @DeleteMapping(value = "/{id}")
-    public Object deleteById(@PathVariable Integer id) {
-        accountsService.deleteById(id);
-        return responseOK();
-    }
-
     @PostMapping
     public Object createAccount(@Validated @RequestBody AccountsRequest accountsRequest,  HttpServletRequest request) {
         final HttpSession session = request.getSession();
