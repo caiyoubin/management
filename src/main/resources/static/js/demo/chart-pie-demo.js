@@ -21,7 +21,7 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["本月活跃客户", "未活跃用户"],
+    labels: ["本月活跃客户", "未活跃客户"],
     datasets: [{
       data: [res['current'], res['customers']],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],

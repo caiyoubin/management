@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>項目管理系統 - Tables</title>
+    <title>項目管理系統 - 客户管理</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -176,8 +176,8 @@
                 <div class="container-fluid">
 
                     <div>
-                        <button type="button" class="btn btn-primary btn-lg btn-disabled" data-toggle="modal" data-target="#myModal"
-                            onclick='btnAdd()'>新增</button>
+                        <button type="button" class="btn btn-primary btn-lg btn-disabled" data-toggle="modal"
+                            data-target="#myModal" onclick='btnAdd()'>新增</button>
                     </div>
                     <p>&nbsp;</p>
                     <!-- DataTales Example -->
@@ -512,27 +512,28 @@
     </script>
 
     <script>
-            (function () {
-                $.ajax({
-                    url: '/api/v1/users/userinfo',
-                    contentType: "application/json",
-                    type: 'GET',
-                    success: function (response) {
-                        document.getElementById('loginName').innerText = response.data.nickname;
-                        let flag = response.data.edit;
-                        let btns = document.getElementsByClassName('btn-disabled');
-                        for (let i = 0; i < btns.length; ++i) {
-                            btns[i].disabled = !flag;
-                        }
+        function authorityBtn() {
+            $.ajax({
+                url: '/api/v1/users/userinfo',
+                contentType: "application/json",
+                type: 'GET',
+                success: function (response) {
+                    document.getElementById('loginName').innerText = response.data.nickname;
+                    let flag = response.data.edit;
+                    let btns = document.getElementsByClassName('btn-disabled');
+                    for (let i = 0; i < btns.length; ++i) {
+                        btns[i].disabled = !flag;
                     }
-                })
-            })()
+                }
+            })
+        }
     </script>
 
     <script>
         // id倒序排序
         window.onload = (function () {
             document.querySelector('th').click();
+            authorityBtn();
         })
     </script>
 
