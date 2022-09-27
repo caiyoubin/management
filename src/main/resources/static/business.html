@@ -402,7 +402,8 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" onclick="btnDelete()">删除</button>
+                            <button type="button" class="btn btn-danger" onclick="btnDelete()"
+                                id="btnDelete">删除</button>
                             <button type="button" class="btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                             <button type="button" class="btn btn-primary" id="btnSave">保存</button>
@@ -545,12 +546,14 @@
                     }
                 }
             })
+            $('#btnDelete').attr('style', 'display:block');
         }
 
 
         function btnAdd() {
             document.getElementById('myModalLabel').textContent = '新增';
             $('#btnSave').attr("onClick", "btnSave('POST')");
+            $('#btnDelete').attr('style', 'display:none');
         }
     </script>
 

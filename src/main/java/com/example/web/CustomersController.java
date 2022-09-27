@@ -33,13 +33,6 @@ public class CustomersController extends AbstractBaseController {
     }
 
 
-    @DeleteMapping(value = "/{id}")
-    public Object deleteById(@PathVariable Integer id) {
-        customersService.deleteById(id);
-        return responseOK();
-    }
-
-
     @PostMapping
     public Object createCustomer(@Validated @RequestBody CustomersRequest customersRequest, HttpServletRequest request) {
         final HttpSession session = request.getSession();
