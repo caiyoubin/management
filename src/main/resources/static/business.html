@@ -513,41 +513,40 @@
     </script>
 
     <script>
-        function btnEdit(id) {
-            $('#btnSave').attr("onClick", "btnSave('PUT')");
-            $.ajax({
-                url: '/api/v1/business/' + id,
-                // data:data,
-                type: 'get',
-                async: false,
-                dataType: 'text',
-                success: function (response) {
-                    response = JSON.parse(response)
-                    if (response['code'] == 0) {
-                        let data = response['data'];
-                        document.getElementById('entityId').value = data['id'];
-                        document.getElementById('itemName').value = data['itemName'];
-                        document.getElementById('detail').value = data['detail'];
-                        document.getElementById('customerName').value = data['customerName'];
-                        document.getElementById('number').value = data['number'];
-                        document.getElementById('demandType').value = data['demandType'];
-                        document.getElementById('currentState').value = data['currentState'];
-                        document.getElementById('productType').value = data['productType'];
-                        document.getElementById('material').value = data['material'];
-                        document.getElementById('width').value = data['width'];
-                        document.getElementById('height').value = data['height'];
-                        document.getElementById('thickness').value = data['thickness'];
-                        document.getElementById('orderTime').value = data['orderTime'];
-                        document.getElementById('completionTime').value = data['completionTime'];
-                        // document.getElementById('modal-body').innerHTML = inner;
-                        document.getElementById('myModalLabel').textContent = '编辑';
-
-                        return true
-                    }
+    function btnEdit(id) {
+        $('#btnSave').attr("onClick", "btnSave('PUT')");
+        $.ajax({
+            url: '/api/v1/business/' + id,
+            // data:data,
+            type: 'get',
+            async: false,
+            dataType: 'text',
+            success: function (response) {
+                response = JSON.parse(response)
+                if (response['code'] == 0) {
+                    let data = response['data'];
+                    document.getElementById('entityId').value = data['id'];
+                    document.getElementById('itemName').value = data['itemName'];
+                    document.getElementById('detail').value = data['detail'];
+                    document.getElementById('customerName').value = data['customerName'];
+                    document.getElementById('number').value = data['number'];
+                    document.getElementById('demandType').value = data['demandType'];
+                    document.getElementById('currentState').value = data['currentState'];
+                    document.getElementById('productType').value = data['productType'];
+                    document.getElementById('material').value = data['material'];
+                    document.getElementById('width').value = data['width'];
+                    document.getElementById('height').value = data['height'];
+                    document.getElementById('thickness').value = data['thickness'];
+                    document.getElementById('orderTime').value = data['orderTime'];
+                    document.getElementById('completionTime').value = data['completionTime'];
+                    // document.getElementById('modal-body').innerHTML = inner;
+                    document.getElementById('myModalLabel').textContent = '编辑';
+                    return true
                 }
-            })
-            $('#btnDelete').attr('style', 'display:block');
-        }
+            }
+        })
+        $('#btnDelete').attr('style', 'display:block');
+    }
 
 
         function btnAdd() {
@@ -614,6 +613,7 @@
     </script>
 
     <script>
+        // 用户是否具有权限
         function authorityBtn() {
             $.ajax({
                 url: '/api/v1/users/userinfo',

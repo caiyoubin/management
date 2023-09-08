@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Slf4j
+@Slf4j(topic = "ExceptionAdvice")
 @ControllerAdvice
 public class ExceptionAdvice {
 
@@ -21,10 +21,9 @@ public class ExceptionAdvice {
     public ResponseEntity<HttpExceptionResponse> handleException(HttpServletRequest request, Exception e) {
         HttpStatus badRequest = HttpStatus.BAD_REQUEST;
         final HttpExceptionResponse response = new HttpExceptionResponse(StateCode.FAIL, e.getMessage(), request.getRequestURI());
-        final HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        final HttpHeaders exceptionHeads = new HttpHeaders();
+        exceptionHeads.setContentType(MediaType.APPLICATION_JSON);
         log.warn("", e);
-
-        return new ResponseEntity<>(response, httpHeaders, badRequest);
+        return new ResponseEntity<>(response, exceptionHeads, badRequest);
     }
 }

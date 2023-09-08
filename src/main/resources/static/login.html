@@ -18,7 +18,7 @@
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -75,54 +75,47 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 <script>
-        $("#butter").click(function () {
-            let data = {};
-
-            let username = $('#username').val();
-            let password = $('#password').val();
-
-            if (username.length == 0 | password.length == 0) {
-                alert("账号或密码不能为空");
-                return;
+$("#butter").click(function () {
+    let data = {};
+    let username = $('#username').val();
+    let password = $('#password').val();
+    if (username.length == 0 | password.length == 0) {
+        alert("账号或密码不能为空");
+        return;
+    }
+    data['username'] = username;
+    data['password'] = password;
+    $.ajax({
+        url: "/api/v1/users/login",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        type: "POST",
+        async: false,
+        success: function (response) {
+            console.log('success')
+            console.log(response)
+            if (response['code'] == 0) {
+                window.location.href = "/index.html";
+            } else if (response['code'] == 1) {
+                alert("账号或密码错误,请检查后重新输入~")
             }
-            data['username'] = username;
-            data['password'] = password;
+        },
+        error: function (response) {
+            console.log('error: ' + response)
+            alert(response['responseJSON']['message']);
+        }
+    })
+})
 
-            $.ajax({
-                url: "/api/v1/users/login",
-                contentType: "application/json",
-                data: JSON.stringify(data),
-                type: "POST",
-                async: false,
-                success: function (response) {
-                    console.log('success')
-                    console.log(response)
-                    if (response['code'] == 0) {
-                        // return 到form表单的地址
-                        // return true
-                        window.location.href = "/index.html";
-                    } else if (response['code'] == 1) {
-                        alert("账号或密码错误,请检查后重新输入~")
-                    }
-                },
-                error: function (response) {
-                    console.log('error: ' + response)
-                    alert(response['responseJSON']['message']);
-                    // return true;
-                }
-            })
-        })
-
-        $("#password").bind("keydown", function (e) {
-            // 兼容FF和IE和Opera
-            var theEvent = e || window.event;
-            var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
-            if (code == 13) {
-                //回车执行查询
-                $("#butter").click();
-            }
-        });
-
+$("#password").bind("keydown", function (e) {
+    // 兼容FF和IE和Opera
+    var theEvent = e || window.event;
+    var code = theEvent.keyCode || theEvent.which || theEvent.charCode;
+    if (code == 13) {
+        //回车执行查询
+        $("#butter").click();
+    }
+});
 </script>
 
 </body>

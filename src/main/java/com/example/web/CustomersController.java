@@ -33,7 +33,7 @@ public class CustomersController extends AbstractBaseController {
     }
 
 
-    @PostMapping
+
     public Object createCustomer(@Validated @RequestBody CustomersRequest customersRequest, HttpServletRequest request) {
         final HttpSession session = request.getSession();
         final String nickname = (String)session.getAttribute("nickname");

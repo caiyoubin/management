@@ -473,23 +473,21 @@
         }
     </script>
 
-    <script>
-        let logout = document.getElementById("logout");
-        logout.onclick = function () {
-            $.ajax({
-                url: '/api/v1/users/logout',
-                contentType: "application/json",
-                type: 'GET',
-                success: function (response) {
-                    window.location.href = '/login.html';
-                },
-                error: function (response) {
-                }
-
-            })
-        }
-
-    </script>
+<script>
+    let logout = document.getElementById("logout");
+    logout.onclick = function () {
+        $.ajax({
+            url: '/api/v1/users/logout',
+            contentType: "application/json",
+            type: 'GET',
+            success: function (response) {
+                window.location.href = '/login.html';
+            },
+            error: function (response) {
+            }
+        })
+    }
+</script>
 
     <script>
         function authorityBtn() {
